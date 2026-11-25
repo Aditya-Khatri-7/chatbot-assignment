@@ -5,8 +5,8 @@ requests from cache. LiteLLM handles provider calls and caching; SQLite stores h
 
 ## Live URLs
 
-- Frontend: _add after deployment_
-- Backend: _add after deployment_ (health check at `/health`)
+- Frontend: https://chatbot-assignment.vercel.app
+- Backend: https://chatbot-assignment-oirq.onrender.com (health check at `/health`)
 
 ## Run locally
 
