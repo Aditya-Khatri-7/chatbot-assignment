@@ -8,7 +8,7 @@ export default function TopBar({ server, sending, onNewChat, systemPrompt, onSys
   return (
     <header className="topbar">
       <div className="brand">
-        <span className="logo" aria-hidden="true">⚡</span>
+        <img className="logo" src="/logo.svg" alt="" />
         <div>
           <h1>Resilient Chat</h1>
           <p>LLM gateway with key failover and caching</p>

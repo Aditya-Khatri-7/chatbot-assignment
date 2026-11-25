@@ -120,7 +120,7 @@ export default function App() {
                 }
                 return (
                   <article key={index} className="assistant" data-testid="assistant-message">
-                    <span className="avatar" aria-hidden="true">R</span>
+                    <img className="avatar" src="/logo.svg" alt="" />
                     <div className="reply">
                       <Markdown>{message.content}</Markdown>
                     </div>

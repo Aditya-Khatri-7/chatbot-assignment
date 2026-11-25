@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Resilient Chat">
+  <rect width="40" height="40" rx="10" fill="#1e1b4b"/>
+  <g fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 13h7" stroke="#8b86b8"/>
+    <path d="M9 27h6c8 0 7-14 16-14" stroke="#fff"/>
+    <path d="M26.5 8.500 31.500 13l-5 4.500" stroke="#fff"/>
+  </g>
+  <circle cx="20.500" cy="13" r="2.3" fill="#fb7185"/>
+</svg>
