@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r backend/requirements-dev.txt
+      - run: make test
+
+  docker:
+    runs-on: ubuntu-latest
+    env:
+      LLM_API_KEYS: placeholder-one,placeholder-two
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - run: make up
+      - name: Backend is healthy
+        run: curl --fail-with-body http://localhost:8000/health
+      - name: Frontend is served
+        run: curl --fail --silent http://localhost:3000 > /dev/null
+      - name: All keys failing gives a clean 503
+        run: |
+          code=$(curl -s -o body.json -w '%{http_code}' http://localhost:8000/chat \
+            -H 'Content-Type: application/json' -H 'X-Simulate-Failure: *=429' \
+            -d '{"session_id":"ci","message":"hello"}')
+          cat body.json
+          test "$code" = "503"
+          grep -q 'all providers unavailable' body.json
+      - if: failure()
+        run: docker compose logs
+      - if: always()
+        run: make down
